@@ -1,0 +1,45 @@
+@if ( userDetailsForm()) {
+<form [formGroup]="userDetailsForm()!"
+  (ngSubmit)="onSubmitForm()"
+  class="flex w-screen  md:w-96 bg-background h-full overflow-auto gap-2 p-2  flex-col scrollbar-thumb-rounded scrollbar-track-rounded grow  scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted">
+  <div class="sticky top-0 flex flex-col bg-background  ">
+    <div class=" flex  relative flex-row items-start gap-2 py-3 justify-start">
+      <div class=" flex flex-col gap-2">
+        <span class="text-base text-muted-foreground">Detalles del usuario </span>
+        <span class="text-lg text-foreground">{{ user()?.email}}</span>
+      </div>
+
+      <button (click)="close()"
+        class="absolute cursor-pointer right-0 inline-flex w-fit justify-center rounded-md bg-background px-3 py-2 text-sm font-semibold text-foreground shadow-sm ring-1 ring-inset ring-foreground hover:bg-card sm:mt-0 sm:w-fit">
+        X
+      </button>
+    </div>
+    <hr class="border-dashed border-border">
+  </div>
+  <div class="flex flex-col gap-2   py-2  w-full ">
+    <span class="text-muted-foreground">Email </span>
+    <input [disabled]="true" type="text" formControlName="email">
+  </div>
+  <div class="flex flex-col gap-2   py-2  w-full ">
+    <span class="text-muted-foreground">Nombre</span>
+    <input type="text" formControlName="fullName">
+  </div>
+
+  <div class="flex py-2 flex-col gap-2 ">
+    <button type="submit" class="bg-primary text-white rounded-md p-2 cursor-pointer">
+      Guardar Cambios
+    </button>
+
+   @if (user()?.isActive) {
+    <button type="button" (click)="onUpdateStateUser()" class="bg-orange-400 text-white rounded-md p-2 cursor-pointer">
+      Desactivar Usuario
+    </button>
+   }@else {
+    <button type="button" (click)="onUpdateStateUser()"  class="bg-green-400 text-white rounded-md p-2 cursor-pointer">
+      Activar Usuario
+    </button>
+   }
+  </div>
+</form>
+
+}

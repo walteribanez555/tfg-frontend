@@ -1,0 +1,29 @@
+<app-user-list-header></app-user-list-header>
+<div class="border-muted/20 bg-background flex min-w-full flex-col rounded-xl border p-2">
+  <app-user-list-table-action></app-user-list-table-action>
+  <div
+    class="scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted grow overflow-x-auto px-5">
+    <table
+      class="text-muted-foreground table w-full table-auto border-collapse border-0 text-left align-middle leading-5">
+      <thead class="border-muted/20 text-muted-foreground border text-xs">
+        <tr app-user-list-table-header ></tr>
+      </thead>
+      <tbody class="gap-2">
+       @if (!isLoading()) {
+        @for (user of filteredUsers(); track $index) {
+          <tr  (click)="onUserSelected.emit(user)"  class="hover:bg-card/50 cursor-pointer " app-user-list-table-row [user]="user"></tr>
+          } @empty {
+          <tr>
+            <td class="py-4 text-center text-sm" colspan="7">No users found</td>
+          </tr>
+          }
+       }@else {
+        <tr>
+          <td class="py-4 text-center text-sm" colspan="7">Cargando Usuarios</td>
+        </tr>
+       }
+      </tbody>
+    </table>
+  </div>
+  <app-table-footer></app-table-footer>
+</div>

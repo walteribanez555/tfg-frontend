@@ -1,0 +1,29 @@
+<app-specialty-list-header></app-specialty-list-header>
+<div class="border-muted/20 bg-background flex min-w-full flex-col rounded-xl border p-2">
+  <app-specialty-list-table-action></app-specialty-list-table-action>
+  <div
+    class="scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted grow overflow-x-auto px-5">
+    <table
+      class="text-muted-foreground table w-full table-auto border-collapse border-0 text-left align-middle leading-5">
+      <thead class="border-muted/20 text-muted-foreground border text-xs">
+        <tr app-user-list-table-header ></tr>
+      </thead>
+      <tbody class="gap-2">
+       @if (!isLoading()) {
+        @for (specialty of filteredSpecialties(); track $index) {
+          <tr  (click)="onSpecialtySelected.emit(specialty)"  class="hover:bg-card/50 cursor-pointer " app-specialty-list-table-row [specialty]="specialty"></tr>
+          } @empty {
+          <tr>
+            <td class="py-4 text-center text-sm" colspan="7">No se encontro especialidades</td>
+          </tr>
+          }
+       }@else {
+        <tr>
+          <td class="py-4 text-center text-sm" colspan="7">Cargando Especialidades</td>
+        </tr>
+       }
+      </tbody>
+    </table>
+  </div>
+  <app-specialty-list-table-footer></app-specialty-list-table-footer>
+</div>

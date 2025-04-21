@@ -1,0 +1,22 @@
+<div class="flex h-screen w-screen">
+  <div class="auth-bg bg-primary hidden flex-1 items-center justify-center bg-cover lg:flex">
+    <div class="max-w-2xl space-y-4 p-8 text-center text-white">
+      <img src="./assets/images/auth-screens.png" alt="dashboard widget" />
+      <h1 class="text-4xl font-bold">"Coolfix tu asistente de mantenimiento confiable"</h1>
+      <p class="text-xs font-light">
+        Coolfix es una plataforma que te permite gestionar tus solicitudes de mantenimiento de manera eficiente y
+        confiable
+      </p>
+    </div>
+  </div>
+  <div class="bg-background flex flex-1 items-center justify-center">
+    <div class="max-w-md overflow-y-auto px-4 sm:w-[500px]">
+      <!-- logo -->
+      <div class="flex items-center justify-center">
+        <b class="text-md text-foreground pl-3 font-bold"> Coolfix </b>
+      </div>
+      <!-- Route -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

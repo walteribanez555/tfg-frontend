@@ -1,0 +1,4 @@
+<div class="flex flex-col gap-2" >
+  <app-select [items]="items" [withFilter]="true"  (onItemSelected)="onSelectedItem($event)"   ></app-select>
+  <app-list-tags [tags]="selectedList"  (onRemoveTag)="onRemoveTag($event)" ></app-list-tags>
+</div>

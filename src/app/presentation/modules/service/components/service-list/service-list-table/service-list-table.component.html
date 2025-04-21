@@ -1,0 +1,29 @@
+<app-service-list-header></app-service-list-header>
+<div class="border-muted/20 bg-background flex min-w-full flex-col rounded-xl border p-2">
+  <app-service-list-table-action></app-service-list-table-action>
+  <div
+    class="scrollbar-thumb-rounded scrollbar-track-rounded scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted grow overflow-x-auto px-5">
+    <table
+      class="text-muted-foreground table w-full table-auto border-collapse border-0 text-left align-middle leading-5">
+      <thead class="border-muted/20 text-muted-foreground border text-xs">
+        <tr app-user-list-table-header ></tr>
+      </thead>
+      <tbody class="gap-2">
+       @if (!isLoading()) {
+        @for (service of filteredServices(); track $index) {
+          <tr  (click)="onServiceSelected.emit(service)"  class="hover:bg-card/50 cursor-pointer " app-service-list-table-row [service]="service"></tr>
+          } @empty {
+          <tr>
+            <td class="py-4 text-center text-sm" colspan="7">No services found</td>
+          </tr>
+          }
+       }@else {
+        <tr>
+          <td class="py-4 text-center text-sm" colspan="7">Cargando Servicios</td>
+        </tr>
+       }
+      </tbody>
+    </table>
+  </div>
+  <app-service-list-table-footer></app-service-list-table-footer>
+</div>

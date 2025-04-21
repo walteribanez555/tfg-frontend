@@ -1,0 +1,5 @@
+<div class="flex w-full sm:w-fit  items-start flex-col gap-2 p-2 " >
+  <span class="text text-foreground text-sm  ml-2" >{{name}}</span>
+
+  <input class="w-full" type="number" [(ngModel)]="amount" (ngModelChange)="onChangeFromInput($event)"  placeholder=" 100.2">
+</div>

@@ -1,0 +1,20 @@
+<div class="flex flex-row w-full gap-2 flex-wrap p-2 border border-muted rounded-sm">
+
+
+  <div *ngFor="let item of itemsQuantity; let i = index " class="p-2 gap-2 w-full sm:w-fit flex flex-row border rounded-sm border-muted items-start  justify-between">
+    <app-quantity [name]="item.name" [id]="item.id"   [formControl]="formsQuantity[i]"    class="w-full"  ></app-quantity>
+    <div>
+      <button  (click)="onRemoveItemOnList(i)" type="button" class="cursor-pointer h-full border border-muted">
+        <svg-icon
+          src="assets/icons/heroicons/outline/x.svg"
+          [svgClass]="'h-5 w-5 text-muted-foreground/50  hover:text-red-600'">
+      </svg-icon>
+      </button>
+    </div>
+  </div>
+
+
+
+
+
+</div>
