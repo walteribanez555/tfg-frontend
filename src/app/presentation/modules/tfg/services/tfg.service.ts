@@ -138,6 +138,13 @@ export class TfgService {
       .subscribe(async (result) => {
         const { title, date, tutor, student, mode } = responseModalFormMapper(result);
 
+        if(!title || !date || !tutor || !student || !mode) {
+          this.#dialogService.showError({
+            description: 'Por favor completa todos los campos',
+          });
+          return;
+        }
+
         const createTfgRequest = {
           title,
           date,
