@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-infra:
-    name: coolfix deploy main environment
+    name: tfg deploy main environment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

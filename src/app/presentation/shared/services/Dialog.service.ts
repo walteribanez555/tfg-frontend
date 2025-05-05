@@ -177,12 +177,12 @@ export class DialogService {
   }
 
   submitDialog() {
-    this.dialogNotifier?.next(null);
+    this.dialogNotifier?.next(true);
     this.closeDialog();
   }
 
   cancelDialog() {
-    this.dialogNotifier?.error(null);
+    this.dialogNotifier?.error(false);
     this.closeDialog();
   }
 }
