@@ -12,7 +12,7 @@ import { SpinnerComponent } from "../../../../shared/components/spinner/spinner.
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css'],
-  imports: [FormsModule, ReactiveFormsModule, RouterLink, AngularSvgIconModule, NgIf, ButtonComponent, NgClass, SpinnerComponent],
+  imports: [FormsModule, ReactiveFormsModule, AngularSvgIconModule, NgIf, ButtonComponent, NgClass, SpinnerComponent],
 })
 export class SignInComponent implements OnInit {
   #authService = inject(AuthService);
@@ -30,6 +30,10 @@ export class SignInComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.#authService.user){
+      this._router.navigate(['/dashboard/tfg/list']);
+    }
+
     this.form = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -65,7 +69,7 @@ export class SignInComponent implements OnInit {
     this.#authService.login(loginRequestDto).subscribe({
       next: (res) => {
         console.log(res);
-        this._router.navigate(['/dashboard/schedule']);
+        this._router.navigate(['/dashboard/tfg/list']);
       },
       error: (err) => {
         console.log(err);

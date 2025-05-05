@@ -2,9 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, viewChild } from '@angular/core';
 import { DcDirective } from 'src/app/presentation/shared/directives/dc.directive';
 import { UserService } from '../../services/user.service';
-import { UserListHeaderComponent } from '../../components/user-list/user-list-header/user-list-header.component';
-import { DynamicForm } from 'src/app/presentation/shared/types/dynamic.types';
-import { FormTemplateComponent } from 'src/app/presentation/shared/components/form-template/form-template.component';
 import { UserListTableComponent } from "../../components/user-list/user-list-table/user-list-table.component";
 import { User } from 'src/app/domain/user/model/user.model';
 

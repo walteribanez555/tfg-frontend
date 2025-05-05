@@ -1,0 +1,38 @@
+<table class="table-auto w-full border-collapse border border-muted">
+  <thead class="bg-muted/20">
+    <tr>
+      <th class="px-4 py-2 text-left text-sm text-foreground">ID del TFG</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Título</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Fecha</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Estado</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Estudiante</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Tutor</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Departamento</th>
+      <th class="px-4 py-2 text-left text-sm text-foreground">Modalidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (tfg of tfgList(); track $index) {
+    <tr class="border-b border-muted hover:bg-muted/50 cursor-pointer" (click)="onSelectItem.emit(tfg)" >
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.tfg_id }}</td>
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.title }}</td>
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.date | date }} </td>
+      <td class="px-4 py-2 text-sm text-foreground">
+        <span class="px-2 py-1 rounded-full text-white" [ngClass]="{
+                  'bg-green-500': tfg.state === 'Approved',
+                  'bg-yellow-500': tfg.state === 'Pending',
+                  'bg-red-500': tfg.state === 'Rejected',
+                  'bg-gray-500' : tfg.state === 'In Review',
+                }">
+          {{ tfg.state }}
+        </span>
+      </td>
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.student_name }}</td>
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.tutor_name }}</td>
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.tutor_department }}</td>
+      <td class="px-4 py-2 text-sm text-foreground">{{ tfg.mode_name }}</td>
+    </tr>
+    }
+
+  </tbody>
+</table>

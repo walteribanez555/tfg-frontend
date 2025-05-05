@@ -14,6 +14,7 @@ type ButtonProps = {
   selector: 'app-button',
   imports: [CommonModule],
   templateUrl: './button.component.html',
+  styleUrl: './button.component.scss',
   standalone: true,
 })
 export class ButtonComponent implements OnInit {

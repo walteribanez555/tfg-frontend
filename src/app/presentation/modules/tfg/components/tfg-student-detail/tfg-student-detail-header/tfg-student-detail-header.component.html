@@ -1,0 +1,22 @@
+<div class="mb-4 flex justify-between">
+  <div class="inline-block">
+    <h3 class="font-semibold text-foreground">Lista de trabajos finales por estudiante</h3>
+
+    <!-- Agrega un field para buscar por id -->
+    <div class="flex items-center mt-2">
+      <label for="search" class="mr-2 text-muted-foreground text-sm font-medium">Buscar por ID del estudiante:</label>
+      <input  [(ngModel)]="studentId" type="text" id="search" class="border rounded px-2 py-1" placeholder="ID del estudiante" />
+    </div>
+    <!-- Agrega el boton para buscar-->
+    <div class=" w-full flex items-center mt-2">
+      <button (click)="getTfgByStudent()"  class= " w-full bg-primary text-white px-4 py-2 rounded">Buscar</button>
+    </div>
+
+  </div>
+
+  <div class="inline-block space-x-4">
+
+
+  </div>
+
+</div>

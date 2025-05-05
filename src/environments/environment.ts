@@ -4,6 +4,6 @@
 
 export const environment = {
   production: false,
-  url : 'https://8p5ylt31ih.execute-api.us-east-1.amazonaws.com/api',
+  url : 'https://zme035ikzh.execute-api.us-east-1.amazonaws.com/api',
 };
 

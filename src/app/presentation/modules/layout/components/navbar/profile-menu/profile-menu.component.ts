@@ -1,16 +1,17 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ThemeService } from '../../../../../core/services/theme.service';
 import { ClickOutsideDirective } from '../../../../../shared/directives/click-outside.directive';
+import { AuthService } from 'src/app/server/services/auth/auth.service';
 
 @Component({
   selector: 'app-profile-menu',
   templateUrl: './profile-menu.component.html',
   styleUrls: ['./profile-menu.component.css'],
-  imports: [ClickOutsideDirective, NgClass, RouterLink, AngularSvgIconModule],
+  imports: [ClickOutsideDirective, NgClass, AngularSvgIconModule],
   animations: [
     trigger('openClose', [
       state(
@@ -35,22 +36,21 @@ import { ClickOutsideDirective } from '../../../../../shared/directives/click-ou
   ],
 })
 export class ProfileMenuComponent implements OnInit {
+  #authService = inject(AuthService);
+  #router= inject(Router);
+
+  user = this.#authService.user;
+
   public isOpen = false;
   public profileMenu = [
-    {
-      title: 'Your Profile',
-      icon: './assets/icons/heroicons/outline/user-circle.svg',
-      link: '/profile',
-    },
-    {
-      title: 'Settings',
-      icon: './assets/icons/heroicons/outline/cog-6-tooth.svg',
-      link: '/settings',
-    },
     {
       title: 'Log out',
       icon: './assets/icons/heroicons/outline/logout.svg',
       link: '/auth',
+      action: () => {
+        this.#authService.logout();
+        this.#router.navigate(['/auth/sign-in']);
+      }
     },
   ];
 
