@@ -223,8 +223,9 @@ export class TfgService {
       .subscribe(async (result) => {
         const { state, mode, init, end } = responseModalFormMapper(result);
 
+
         let reportRequest: { state: string; mode: string; init?: any; end?: any } = {
-          state: this.states[state].name,
+          state: this.states.find((s) => s.id === state)!.name,
           mode: this.modes[mode].id,
         };
         if (init) {
